@@ -1,35 +1,56 @@
 package dio.aula.model;
 
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "tab_user")
 public class User {
-  private String name;
-  private String username;
-  private String password;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private Integer id;
 
-  public String getName() {
-    return name;
-  }
+    @Column(length = 50, nullable = false)
+    private String name;
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    @Column(length = 20, nullable = false)
+    private String username;
 
-  public String getUsername() {
-    return username;
-  }
+    @Column(length = 100, nullable = false)
+    private String password;
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public String getPassword() {
-    return password;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", username='" + username + '\'' +
+            ", password='" + password + '\'' +
+            '}';
+    }
 }
